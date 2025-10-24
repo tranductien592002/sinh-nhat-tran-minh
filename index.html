@@ -1,176 +1,66 @@
-<!doctype html>
-<html lang="vi">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Happy Birthday Trần Minh — Luxury Piano Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#071029;
-    --gold:#f5d98a;
-    --gold-deep:#b8860b;
-    --muted:rgba(255,255,255,0.92);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--navy),#031022);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--muted);overflow:hidden}
-  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
-  .card{width:980px;max-width:96vw;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:22px;padding:32px;box-shadow:0 24px 80px rgba(2,6,23,0.7);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
-  .grid{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
-  .left{flex:1;min-width:260px;padding:10px 18px}
-  .title{font-family:'Playfair Display',serif;color:var(--gold);font-size:44px;margin:6px 0;text-shadow:0 8px 30px rgba(184,134,11,0.06)}
-  .subtitle{font-size:18px;color:rgba(255,255,255,0.92);margin:6px 0 14px}
-  .btns{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-  .btn{background:linear-gradient(135deg,var(--gold),var(--gold-deep));border:none;padding:12px 22px;border-radius:999px;font-weight:700;color:#071029;cursor:pointer;box-shadow:0 12px 30px rgba(184,134,11,0.12);transition:transform .18s}
-  .mini{background:transparent;border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.88);padding:10px 14px;border-radius:12px;cursor:pointer}
-  .right{width:420px;display:flex;align-items:center;justify-content:center;position:relative}
-  .frame{width:360px;height:360px;border-radius:18px;background-size:cover;background-position:center;box-shadow:0 20px 60px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;position:relative}
-  .overlay{position:absolute;inset:0;pointer-events:none}
-  .typewrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:20px}
-  .type{background:linear-gradient(180deg, rgba(3,6,10,0.45), rgba(3,6,10,0.25));padding:16px 20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);max-width:90%;text-align:center;font-family:'Playfair Display',serif;color:var(--gold);font-size:20px;line-height:1.4;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
-  .eng{font-size:14px;color:rgba(255,255,255,0.78);margin-top:8px}
-  canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:6}
-  .bubbles{position:absolute;left:0;right:0;bottom:0;top:0;pointer-events:none;overflow:hidden;z-index:3}
-  .bubble{position:absolute;border-radius:50%;opacity:0.10;mix-blend-mode:screen;background:radial-gradient(circle at 30% 30%, rgba(245,217,138,0.9), rgba(184,134,11,0.4));filter:blur(14px)}
-  footer{position:absolute;left:18px;bottom:12px;font-size:13px;color:rgba(255,255,255,0.45);z-index:8}
-  @media (max-width:880px){ .card{padding:18px} .right{display:none} .title{font-size:28px} .type{font-size:18px} }
-  /* subtle animations */
-  .glow{animation:glow 3s infinite alternate;}
-  @keyframes glow{from{filter:drop-shadow(0 6px 18px rgba(184,134,11,0.06))}to{filter:drop-shadow(0 12px 36px rgba(184,134,11,0.12))}}
-  .fade-in{opacity:0;transform:translateY(6px);animation:fadeIn 1s forwards}
-  @keyframes fadeIn{to{opacity:1;transform:none}}
+/* -------------------------------------- */
+/* LUXURY PIANO EDITION - TỐI ƯU MOBILE   */
+/* -------------------------------------- */
+  :root{
+    --navy:#071029;
+    --gold:#f5d98a;
+    --gold-deep:#b8860b;
+    --muted:rgba(255,255,255,0.92);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--navy),#031022);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--muted);overflow-y:auto; overflow-x:hidden;} /* Đã sửa: Cho phép cuộn dọc, ngăn cuộn ngang */
+  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
+  .card{width:980px;max-width:96vw;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:22px;padding:32px;box-shadow:0 24px 80px rgba(2,6,23,0.7);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+  .grid{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .left{flex:1;min-width:260px;padding:10px 18px}
+  .title{font-family:'Playfair Display',serif;color:var(--gold);font-size:44px;margin:6px 0;text-shadow:0 8px 30px rgba(184,134,11,0.06)}
+  .subtitle{font-size:18px;color:rgba(255,255,255,0.92);margin:6px 0 14px}
+  .btns{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .btn{background:linear-gradient(135deg,var(--gold),var(--gold-deep));border:none;padding:12px 22px;border-radius:999px;font-weight:700;color:#071029;cursor:pointer;box-shadow:0 12px 30px rgba(184,134,11,0.12);transition:transform .18s; min-height:48px; min-width:48px; } /* Đã thêm min-height/width */
+  .mini{background:transparent;border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.88);padding:10px 14px;border-radius:12px;cursor:pointer; min-height:48px;} /* Đã thêm min-height */
+  .right{width:420px;display:flex;align-items:center;justify-content:center;position:relative}
+  .frame{width:360px;height:360px;border-radius:18px;background-size:cover;background-position:center;box-shadow:0 20px 60px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;position:relative}
+  .overlay{position:absolute;inset:0;pointer-events:none}
+  .typewrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:20px}
+  .type{background:linear-gradient(180deg, rgba(3,6,10,0.45), rgba(3,6,10,0.25));padding:16px 20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);max-width:90%;text-align:center;font-family:'Playfair Display',serif;color:var(--gold);font-size:20px;line-height:1.4;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+  .eng{font-size:14px;color:rgba(255,255,255,0.78);margin-top:8px}
+  canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:6}
+  .bubbles{position:absolute;left:0;right:0;bottom:0;top:0;pointer-events:none;overflow:hidden;z-index:3}
+  .bubble{position:absolute;border-radius:50%;opacity:0.10;mix-blend-mode:screen;background:radial-gradient(circle at 30% 30%, rgba(245,217,138,0.9), rgba(184,134,11,0.4));filter:blur(14px)}
+  footer{position:absolute;left:18px;bottom:12px;font-size:13px;color:rgba(255,255,255,0.45);z-index:8}
+  
+/* MEDIA QUERY CHO MÀN HÌNH MÁY TÍNH BẢNG (Dưới 880px) */
+  @media (max-width:880px){ 
+    .card{padding:18px; max-width:98%;} 
+    .right{display:none} 
+    .title{font-size:28px} 
+    .subtitle{font-size:16px;}
+    .left{padding:10px;}
+    .type{font-size:18px; padding:12px 16px;} 
+    .grid{flex-direction: column; align-items: stretch;} /* Đảm bảo xếp cột dọc */
+    .stage{align-items: flex-start;} /* Nội dung xuất hiện từ trên xuống */
+}
+
+/* BỔ SUNG: MEDIA QUERY CHO ĐIỆN THOẠI THÔNG MINH (Dưới 480px) */
+@media (max-width:480px){ 
+    /* Các nút xếp dọc, dễ chạm hơn */
+    .btns{flex-direction: column; align-items: stretch; gap:10px;}
+    .btn{padding:16px 22px; font-size:16px;}
+    .mini{padding:14px 14px;}
+    
+    /* Căn giữa chữ và tiêu đề */
+    .left{text-align: center;}
+    .title{font-size: 26px; margin-top: 10px;}
+    .subtitle{margin-bottom: 20px;}
+    
+    /* Đưa footer xuống dưới và căn giữa */
+    footer{position: static; text-align: center; margin-top: 30px; padding-bottom: 20px;}
+}
+
+  /* subtle animations */
+  .glow{animation:glow 3s infinite alternate;}
+  @keyframes glow{from{filter:drop-shadow(0 6px 18px rgba(184,134,11,0.06))}to{filter:drop-shadow(0 12px 36px rgba(184,134,11,0.12))}}
+  .fade-in{opacity:0;transform:translateY(6px);animation:fadeIn 1s forwards}
+  @keyframes fadeIn{to{opacity:1;transform:none}}
 </style>
-</head>
-<body>
-<div class="stage">
-  <div class="card" id="card">
-    <div class="grid">
-      <div class="left">
-        <div class="title">🎉 Chúc mừng sinh nhật Trần Minh</div>
-        <div class="subtitle">Chúc giàu có, bình an và rực rỡ như hôm nay.</div>
-        <div class="btns">
-          <button class="btn" id="openBtn">Mở thiệp & Bật nhạc</button>
-          <button class="mini" id="playBtn">▶ Play music</button>
-          <button class="mini" id="muteBtn">Tắt nhạc</button>
-        </div>
-        <div style="margin-top:14px;color:rgba(255,255,255,0.72)">Nhấn "Mở thiệp & Bật nhạc" để bắt đầu trải nghiệm — hoặc nhấn "Play music" nếu trình duyệt chặn autoplay.</div>
-      </div>
-      <div class="right">
-        <div class="frame" id="frame" style="background-image:url('img/lux-cake.jpg')">
-          <div class="typewrap">
-            <div class="type" id="typeText" aria-live="polite"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <canvas id="confetti"></canvas>
-    <div class="bubbles" id="bubbles"></div>
-    <div class="overlay"></div>
-    <footer>Happy Birthday Trần Minh — Luxury Piano Edition</footer>
-  </div>
-</div>
-
-<!-- audio -->
-<audio id="music" loop preload="auto">
-  <source src="music/piano.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-// Typewriter
-const fullText = "Chúc mừng sinh nhật Trần Minh — Chúc giàu có, bình an và rực rỡ như hôm nay.";
-const typeEl = document.getElementById('typeText');
-let idx = 0;
-function typeStep(){
-  if(idx <= fullText.length){
-    typeEl.textContent = fullText.slice(0, idx);
-    idx += 1;
-    setTimeout(typeStep, 35 + Math.random()*30);
-  }
-}
-
-// Bubbles generator
-const bubbles = document.getElementById('bubbles');
-function makeBubble(){
-  const b = document.createElement('div');
-  b.className = 'bubble';
-  const size = 40 + Math.random()*120;
-  b.style.width = b.style.height = size + 'px';
-  b.style.left = (Math.random()*86) + '%';
-  b.style.bottom = (-50 - Math.random()*220) + 'px';
-  b.style.opacity = (0.04 + Math.random()*0.12);
-  bubbles.appendChild(b);
-  const duration = 7000 + Math.random()*9000;
-  b.animate([{transform:'translateY(0) scale(0.9)'},{transform:'translateY(-' + (window.innerHeight + 300) + 'px) scale(1.05)'}],{duration:duration,iterations:1,easing:'cubic-bezier(.2,.9,.3,1)'});
-  setTimeout(()=>{ b.remove(); }, duration+200);
-}
-setInterval(makeBubble, 850);
-
-// Confetti gentle
-const conf = document.getElementById('confetti');
-const ctx = conf.getContext('2d');
-let W = conf.width = window.innerWidth;
-let H = conf.height = window.innerHeight;
-window.addEventListener('resize', ()=>{W=conf.width = window.innerWidth;H=conf.height = window.innerHeight;});
-
-const confetti = [];
-const colors = ['#f5d98a','#ffffff','#b8860b','#ffdca3'];
-for(let i=0;i<90;i++){
-  confetti.push({x:Math.random()*W,y:Math.random()*-H,w:6+Math.random()*10,h:6+Math.random()*6,r:Math.random()*360,c:colors[Math.floor(Math.random()*colors.length)],s:1+Math.random()*2,rot:Math.random()*0.2});
-}
-function drawConf(){
-  ctx.clearRect(0,0,W,H);
-  for(const p of confetti){
-    ctx.save();
-    ctx.translate(p.x,p.y);
-    ctx.rotate(p.r);
-    ctx.fillStyle = p.c;
-    ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-    ctx.restore();
-    p.y += 1.2*p.s + Math.cos(p.r*0.1);
-    p.x += Math.sin(p.r*0.02)*2;
-    p.r += p.rot*0.05;
-    if(p.y > H + 20){ p.y = -20 - Math.random()*H; p.x = Math.random()*W; }
-  }
-  requestAnimationFrame(drawConf);
-}
-drawConf();
-
-// Buttons and audio
-const openBtn = document.getElementById('openBtn');
-const playBtn = document.getElementById('playBtn');
-const muteBtn = document.getElementById('muteBtn');
-const music = document.getElementById('music');
-let opened = false;
-
-function startExperience(){
-  if(!opened){
-    idx = 0; typeStep();
-    // small pop
-    const frame = document.getElementById('frame');
-    frame.animate([{transform:'scale(0.98)'},{transform:'scale(1.02)'}],{duration:700,iterations:1,easing:'cubic-bezier(.2,.9,.3,1)'});
-    // confetti burst
-    for(let i=0;i<40;i++){ confetti.push({x:W/2 + (Math.random()-0.5)*400,y:H/2 + (Math.random()-0.5)*80,w:6+Math.random()*12,h:6+Math.random()*6,r:Math.random()*360,c:colors[Math.floor(Math.random()*colors.length)],s:1+Math.random()*3,rot:Math.random()*0.4}); }
-    music.play().catch(()=>{});
-    opened = true;
-    openBtn.textContent = 'Đã mở';
-    openBtn.disabled = true;
-  }
-}
-
-openBtn.addEventListener('click', ()=>{ startExperience(); });
-
-playBtn.addEventListener('click', ()=>{
-  music.play().then(()=>{ playBtn.style.display='none'; muteBtn.textContent='Tắt nhạc'; }).catch(()=>{ alert('Trình duyệt chặn autoplay — vui lòng nhấn "Mở thiệp & Bật nhạc"'); });
-});
-
-muteBtn.addEventListener('click', ()=>{
-  if(music.paused){ music.play(); muteBtn.textContent='Tắt nhạc'; } else { music.pause(); muteBtn.textContent='Bật nhạc'; }
-});
-
-// Try autoplay silently
-setTimeout(()=>{ music.play().catch(()=>{}); }, 1200);
-
-document.addEventListener('keydown', (e)=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); startExperience(); } });
-</script>
-</body>
-</html>
