@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật!</title>
+    <!-- Tải Tailwind CSS cho styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cấu hình Tailwind cho font và màu sắc -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-pink': '#FF69B4', // Màu hồng sinh nhật
+                        'secondary-gold': '#FFD700', // Màu vàng đồng
+                        'bg-dark': '#1e293b', // Màu nền tối
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        confetti: {
+                            '0%': { transform: 'translateY(-100vh) rotate(0deg)', opacity: '0' },
+                            '100%': { transform: 'translateY(100vh) rotate(720deg)', opacity: '1' },
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS cho hiệu ứng Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 50;
+            animation: confetti 5s ease-out forwards;
+        }
+
+        /* Ẩn nội dung thiệp ban đầu */
+        #card-content {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        /* Lớp hiển thị nội dung thiệp */
+        .show-content {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        /* Tăng cường hiệu ứng cho button */
+        #open-button:hover {
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.6);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<!-- Đã thêm gradient nền để tăng độ sâu và tính thẩm mỹ -->
+<body class="font-sans min-h-screen bg-bg-dark flex items-center justify-center p-4 relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+
+    <!-- Container chính giữa màn hình - Đã tối ưu hóa max-width cho mobile và desktop -->
+    <div id="birthday-container" class="w-full max-w-sm sm:max-w-xl lg:max-w-2xl bg-white p-8 md:p-12 rounded-xl shadow-2xl border-4 border-primary-pink/50 text-center relative z-10 transition-all duration-500 lg:hover:shadow-2xl lg:hover:shadow-primary-pink/50">
+        
+        <!-- Tiêu đề responsive: text-4xl trên mobile, 5xl trên tablet, 6xl trên desktop -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-4 tracking-tight">
+            Một Thông Điệp Đặc Biệt
+        </h1>
+        
+        <!-- Mô tả responsive -->
+        <p class="text-base sm:text-lg text-gray-500 mb-8">
+            Nhấn vào nút bên dưới để mở thiệp và xem lời chúc!
+        </p>
+
+        <!-- Nút mở thiệp -->
+        <button 
+            id="open-button" 
+            class="transition duration-300 transform bg-primary-pink text-white text-xl font-bold py-3 px-8 rounded-full shadow-lg hover:bg-pink-600 focus:outline-none focus:ring-4 focus:ring-primary-pink focus:ring-opacity-50 active:scale-95">
+            🎉 Mở Thiệp Chúc Mừng 🎉
+        </button>
+
+        <!-- Nội dung thiệp (Ẩn ban đầu) -->
+        <div id="card-content" class="mt-10">
+            
+            <!-- Ảnh profile responsive -->
+            <div class="mb-6 mx-auto w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-secondary-gold shadow-md">
+                <!-- Hình ảnh Placeholder. Thay thế URL này bằng ảnh người được chúc mừng -->
+                <img src="https://placehold.co/128x128/FFD700/FFFFFF?text=TM" alt="Ảnh Trần Minh" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Tiêu đề lời chúc - Đã cá nhân hóa -->
+            <h2 class="text-3xl md:text-4xl font-black text-primary-pink mb-4">
+                CHÚC MỪNG SINH NHẬT TRẦN MINH!
+            </h2>
+            
+            <!-- Nội dung lời chúc responsive - Đã cá nhân hóa -->
+            <p class="text-lg sm:text-xl lg:text-2xl text-gray-700 leading-relaxed italic">
+                "Gửi Trần Minh yêu quý, chúc bạn có một ngày sinh nhật thật ý nghĩa, vui vẻ và ấm áp bên những người thân yêu. Chúc Minh tuổi mới gặt hái thêm nhiều thành công, luôn giữ được sự nhiệt huyết và đạt được mọi mục tiêu đã đề ra. Happy Birthday!"
+            </p>
+
+            <!-- Chữ ký responsive -->
+            <div class="mt-8 pt-4 border-t border-gray-200">
+                <p class="text-base sm:text-lg font-semibold text-gray-600">
+                    — Người Gửi Yêu Thương - Trần Đức Tiến
+                </p>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Script JavaScript cho Confetti và tương tác -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openButton = document.getElementById('open-button');
+            const cardContent = document.getElementById('card-content');
+            const container = document.getElementById('birthday-container');
+            
+            // Hàm tạo hiệu ứng Confetti
+            function createConfetti() {
+                // Màu sắc được chọn để tạo không khí lễ hội
+                const colors = ['#FF69B4', '#FFD700', '#FFFFFF', '#00FFFF', '#FF0000'];
+                const numConfetti = 50;
+                
+                for (let i = 0; i < numConfetti; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Chọn màu ngẫu nhiên
+                    confetti.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+                    
+                    // Vị trí ngẫu nhiên trên màn hình
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.top = `${Math.random() * -20}px`; // Bắt đầu từ trên cao
+                    
+                    // Kích thước ngẫu nhiên
+                    const size = Math.random() * 8 + 5;
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    
+                    // Tốc độ và độ trễ ngẫu nhiên
+                    confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                    confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+                    
+                    document.body.appendChild(confetti);
+
+                    // Xóa confetti sau khi kết thúc animation
+                    confetti.addEventListener('animationend', () => {
+                        confetti.remove();
+                    });
+                }
+            }
+
+            // Xử lý sự kiện khi nhấn nút
+            openButton.addEventListener('click', () => {
+                // 1. Kích hoạt hiệu ứng Confetti
+                createConfetti();
+
+                // 2. Ẩn nút và hiển thị nội dung thiệp
+                openButton.style.display = 'none';
+                cardContent.classList.add('show-content');
+
+                // 3. Thay đổi giao diện container sau khi mở
+                // Điều chỉnh padding để nội dung hiển thị thoải mái hơn
+                container.classList.remove('p-8', 'md:p-12');
+                container.classList.add('py-12', 'px-6', 'md:py-16', 'md:px-16');
+
+                // Ngăn người dùng nhấn lại (nếu nút bị ẩn)
+                openButton.disabled = true;
+            });
+        });
+    </script>
+</body>
+</html>
